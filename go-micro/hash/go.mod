@@ -1,4 +1,4 @@
-module hash-service
+module github.com/nskondratev/microservices-frameworks-comparison/go-micro/hash
 
 go 1.12
 
