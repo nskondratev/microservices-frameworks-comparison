@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package go.micro.srv.hash;
+
+service Hash {
+    rpc SHA256(SHA256Request) returns (SHA256Response) {}
+}
+
+message SHA256Request {
+    string str = 1;
+}
+
+message SHA256Response {
+    string hash = 1;
+}
