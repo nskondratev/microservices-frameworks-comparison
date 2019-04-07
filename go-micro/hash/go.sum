@@ -536,7 +536,8 @@ github.com/neelance/astrewrite v0.0.0-20160511093645-99348263ae86/go.mod h1:kHJE
 github.com/neelance/sourcemap v0.0.0-20151028013722-8c68805598ab/go.mod h1:Qr6/a/Q4r9LP1IltGz7tA7iOK1WonHEYhu1HRBA7ZiM=
 github.com/nicolai86/scaleway-sdk v1.10.2-0.20180628010248-798f60e20bb2 h1:BQ1HW7hr4IVovMwWg0E0PYcyW8CzqDcVmaew9cujU4s=
 github.com/nicolai86/scaleway-sdk v1.10.2-0.20180628010248-798f60e20bb2/go.mod h1:TLb2Sg7HQcgGdloNxkrmtgDNR9uVYF3lfdFIN4Ro6Sk=
-github.com/nskondratev/microservices-frameworks-comparison v0.0.0-20190406161234-bbdedd4a2380 h1:CKCz2eEaJg6Ci40siRMt2uF3fvLMmHvjISmCaID8qBI=
+github.com/nskondratev/microservices-frameworks-comparison/go-micro/proto v0.0.0-20190407102613-1fe19d652f8d h1:TDW8XgyANM2RM3l6t9dkLllLJw3vRvh3Jm8NE5RTnVM=
+github.com/nskondratev/microservices-frameworks-comparison/go-micro/proto v0.0.0-20190407102613-1fe19d652f8d/go.mod h1:890JNkuumWtgw71ssalMzUxR/19lA8ykEUtNDtrQ6/E=
 github.com/oklog/run v1.0.0 h1:Ru7dDtJNOyC66gQ5dQmaCa0qIsAUFY3sFpK1Xk8igrw=
 github.com/oklog/run v1.0.0/go.mod h1:dlhp/R75TPv97u0XWUtDeV/lRKWPKSdTuV0TZvrmrQA=
 github.com/onsi/ginkgo v1.6.0/go.mod h1:lLunBs/Ym6LB5Z9jYTR76FiuTmxDTDusOGeTQH+WWjE=
