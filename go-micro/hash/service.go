@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"crypto/sha256"
+	"encoding/hex"
 	"github.com/micro/go-micro"
 	. "github.com/nskondratev/microservices-frameworks-comparison/go-micro/proto/hash"
 	"log"
@@ -13,7 +14,7 @@ type Hash struct{}
 func (h *Hash) SHA256(ctx context.Context, req *SHA256Request, rsp *SHA256Response) error {
 	hf := sha256.New()
 	hf.Write([]byte(req.Str))
-	rsp.Hash = string(hf.Sum(nil))
+	rsp.Hash = hex.EncodeToString(hf.Sum(nil))
 	return nil
 }
 
