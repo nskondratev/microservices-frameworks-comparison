@@ -7,7 +7,7 @@ import (
 	"github.com/labstack/echo/middleware"
 	"github.com/micro/go-micro/client"
 	"github.com/micro/go-web"
-	. "github.com/nskondratev/microservices-frameworks-comparison/go-micro/proto/hash"
+	. "go-micro-benchmark/proto/hash"
 	"log"
 	"net/http"
 )
@@ -27,9 +27,10 @@ var (
 )
 
 func (as *ApiService) SHA256(c echo.Context) error {
-	log.Println("Received SHA256 API request")
 
-	str := c.Param("string")
+	str := c.QueryParam("string")
+
+	log.Printf("Received SHA256 API request, input string: %s", str)
 
 	response, err := cl.SHA256(context.TODO(), &SHA256Request{
 		Str: str,

@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  nats:
+    image: nats:latest
+    restart: always
+    hostname: "nats"
+
+  hash:
+    build: ./hash
+    depends_on:
+      - nats
+    links:
+      - nats
+    restart: always
+    volumes:
+      - ./hash/app:/app
+    environment:
+      MICRO_TRANSPORT: "nats"
+      MICRO_TRANSPORT_ADDRESS: "nats:4222"
+      MICRO_BROKER: "nats"
+      MICRO_BROKER_ADDRESS: "nats:4222"
+      MICRO_REGISTRY: "nats"
+      MICRO_REGISTRY_ADDRESS: "nats:4222"
+    command: ["./hash"]
+
+
+  api:
+    build: ./api
+    depends_on:
+      - nats
+      - hash
+    links:
+      - hash
+      - nats
+    restart: always
+    volumes:
+      - ./api/app:/app
+    environment:
+      MICRO_TRANSPORT: "nats"
+      MICRO_TRANSPORT_ADDRESS: "nats:4222"
+      MICRO_BROKER: "nats"
+      MICRO_BROKER_ADDRESS: "nats:4222"
+      MICRO_REGISTRY: "nats"
+      MICRO_REGISTRY_ADDRESS: "nats:4222"
+    command: ["./api"]
+    ports:
+      - 8080:8080
