@@ -2,23 +2,27 @@ package main
 
 import (
 	"context"
-	"crypto/sha256"
-	"encoding/hex"
 	"github.com/micro/go-micro"
+	"go-micro-benchmark/hash/hasher"
 	. "go-micro-benchmark/proto/hash"
 	"log"
 )
 
+var hf = hasher.New()
+
 type Hash struct{}
 
 func (h *Hash) SHA256(ctx context.Context, req *SHA256Request, rsp *SHA256Response) error {
-	hf := sha256.New()
-	hf.Write([]byte(req.Str))
-	rsp.Hash = hex.EncodeToString(hf.Sum(nil))
+	hash, err := hf.Sum(&req.Str)
+	if err != nil {
+		return err
+	}
+	rsp.Hash = hash
 	return nil
 }
 
 func main() {
+
 	service := micro.NewService(
 		micro.Name("hash"),
 	)
