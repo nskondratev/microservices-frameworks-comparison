@@ -30,8 +30,6 @@ func (as *ApiService) SHA256(c echo.Context) error {
 
 	str := c.QueryParam("string")
 
-	log.Printf("Received SHA256 API request, input string: %s", str)
-
 	response, err := cl.SHA256(context.TODO(), &SHA256Request{
 		Str: str,
 	})
