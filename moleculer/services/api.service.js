@@ -1,21 +1,27 @@
-"use strict";
+'use strict'
 
-const ApiGateway = require("moleculer-web");
+const fastify = require('fastify')
 
 module.exports = {
-	name: "api",
-	mixins: [ApiGateway],
+  name: 'api',
 
-	// More info about settings: https://moleculer.services/docs/0.13/moleculer-web.html
-	settings: {
-		port: process.env.PORT || 3000,
+  app: null,
 
-		routes: [{
-			path: "/",
-			whitelist: [
-				// Access to any actions in all services under "/api" URL
-				"**"
-			]
-		}],
-	}
-};
+  created () {
+    this.app = fastify({ logger: false })
+
+    this.app.get('/hash/sha256', request => this.broker.call('hash.sha256', { string: request.query.string }))
+  },
+
+  async started () {
+    await this.app.listen(this.settings.port)
+  },
+
+  async stopped () {
+    await this.app.close()
+  },
+
+  settings: {
+    port: process.env.PORT || 3000
+  }
+}

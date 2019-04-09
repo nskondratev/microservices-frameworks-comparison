@@ -34,6 +34,8 @@ module.exports = {
 	// More info: https://moleculer.services/docs/0.13/networking.html
 	transporter: "NATS",
 
+	cacher: "memory",
+
 	// Define a serializer. 
 	// Available values: "JSON", "Avro", "ProtoBuf", "MsgPack", "Notepack", "Thrift". 
 	// More info: https://moleculer.services/docs/0.13/networking.html
